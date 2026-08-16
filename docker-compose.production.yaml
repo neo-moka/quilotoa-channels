@@ -2,7 +2,9 @@ version: '3'
 
 services:
   base: &base
-    image: chatwoot/chatwoot:latest
+    ## Published by .github/workflows/publish_ghcr.yml
+    ## Pin to :sha-<short> or a version tag for reproducible deploys.
+    image: ghcr.io/neo-moka/quilotoa-channels:develop
     env_file: .env ## Change this file for customized env variables
     volumes:
       - storage_data:/app/storage
@@ -42,10 +44,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
+      # Kept in sync with POSTGRES_DATABASE / POSTGRES_USERNAME / POSTGRES_PASSWORD in .env
       - POSTGRES_DB=chatwoot
       - POSTGRES_USER=postgres
-      # Please provide your own password.
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   redis:
     image: redis:alpine
