@@ -23,6 +23,10 @@ services:
       ## Runs the MIT-licensed edition only, so branding config is ours to set.
       ## Read as any-value-is-true: DISABLE_ENTERPRISE=false also disables it.
       - DISABLE_ENTERPRISE=true
+      ## Drops the usage counters from the daily hub ping. The identifying block
+      ## (identifier, host, version, edition) still goes; only removing the
+      ## schedule.yml entry stops the call, and that also kills licence checks.
+      - DISABLE_TELEMETRY=1
     entrypoint: docker/entrypoints/rails.sh
     command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
     restart: always
@@ -37,6 +41,7 @@ services:
       - RAILS_ENV=production
       - INSTALLATION_ENV=docker
       - DISABLE_ENTERPRISE=true
+      - DISABLE_TELEMETRY=1
     command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
     restart: always
 
