@@ -1,3 +1,37 @@
+<!-- neomoka:engineering start — generado por `just sync` desde neo-moka/engineering; no editar a mano -->
+
+## Reglas de Neomoka (organización)
+
+Este repo sigue las directrices de `neo-moka/engineering`: las del
+[`AGENTS.md` de organización](https://github.com/neo-moka/engineering/blob/main/AGENTS.md)
+valen acá, y lo de abajo puede endurecerlas, nunca aflojarlas.
+
+- **Lo que concede privilegio se pide en `devops`** (roles, triggers, secretos
+  de environment, branch protection), nunca se arregla en este repo ni desde una consola.
+- **Secretos sólo en Secret Manager**: nunca en el repo, en logs, en `env` de
+  Terraform ni en outputs. **Ninguna máquina lee 1Password** (`op`, `op://`):
+  lo que todavía lo haga se migra, no se extiende.
+- **VM compartida de develop**: sólo por el `iac/provider/vm` del repo, con
+  `vm-ssh` del proyecto de core; lo nuevo stateless va a Cloud Run.
+- **Lo que corre es lo que dice el repo**: nada a mano en un entorno.
+- **Arquitectura hexagonal** en servicios con lógica de negocio: el núcleo no
+  importa frameworks ni SDKs, y un test lo comprueba.
+- **Medir antes de afirmar**; ausencia de dato nunca es cero.
+- **En `develop`, los agentes mergean solos**; una persona promueve a `main`, concede
+  privilegios y publica hacia afuera (`engineering/ADR-0003 §3`).
+- **Un issue es un PR y tiene un dueño.** Lo que pide más de un PR es una épica:
+  cada parte va a la rama `epic/…` con validación rápida, y la verificación
+  completa corre una vez, al promover a `develop` (`engineering/ADR-0005 §3-4`).
+- Conventional commits en español; `just validate` antes de dar algo por terminado.
+
+Detalle: [forma de trabajo](https://github.com/neo-moka/engineering/tree/main/forma-de-trabajo) ·
+[tecnología](https://github.com/neo-moka/engineering/tree/main/tecnologia) ·
+[uso de agentes](https://github.com/neo-moka/engineering/blob/main/agentes/uso-de-agentes.md)
+
+Familia **quilotoa**: [reglas de familia](https://github.com/neo-moka/engineering/blob/main/proyectos/quilotoa.md).
+
+<!-- neomoka:engineering end -->
+
 # Chatwoot Development Guidelines
 
 ## Build / Test / Lint
