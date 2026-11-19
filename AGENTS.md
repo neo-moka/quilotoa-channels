@@ -1,4 +1,5 @@
 <!-- neomoka:engineering start — generado por `just sync` desde neo-moka/engineering; no editar a mano -->
+
 ## Reglas de Neomoka (organización)
 
 Este repo sigue las directrices de `neo-moka/engineering`: las del
@@ -28,6 +29,7 @@ Detalle: [forma de trabajo](https://github.com/neo-moka/engineering/tree/main/fo
 [uso de agentes](https://github.com/neo-moka/engineering/blob/main/agentes/uso-de-agentes.md)
 
 Familia **quilotoa**: [reglas de familia](https://github.com/neo-moka/engineering/blob/main/proyectos/quilotoa.md).
+
 <!-- neomoka:engineering end -->
 
 # Chatwoot Development Guidelines
